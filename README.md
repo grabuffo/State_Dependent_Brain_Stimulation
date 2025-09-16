@@ -1,7 +1,7 @@
 # State_Dependent_Brain_Stimulation
 This repository includes the code required to reproduce the results in: "Targeting pre-stimulus brain states predicts and controls variability in stimulation responses - Rabuffo, G.; Angiolelli, M.; Fukai, T.; Deco, G.; Sorrentino, P.; Momi, D."
 
-![alt text](https://github.com/grabuffo/State_Dependent_Brain_Stimulation/blob/main/Momi_Abstract.png)
+![alt text](https://github.com/grabuffo/State_Dependent_Brain_Stimulation/blob/main/Rabuffo_et_al_Abstract.png)
 
 # Data
 The data used in this study were taken from an open dataset collected at the "Claudio Munari'' Epilepsy Surgery Center of Milan in Italy (https://doi.org/10.17605/OSF.IO/WSGZP), where simultaneous stereotactic electroencephalography (sEEG) and high-density scalp EEG (hd-EEG) was recorded following intracortical single pulse electrical stimulation on 36 patients (median age = 33 ± 8 years, 21 female). All subjects had a history of drug-resistant, focal epilepsy, and were candidates for surgical removal/ablation of the seizure onset zone (SOZ). For details regarding the data acquisition and the preprocessing steps please refer to the original papers (Mikulan et al., 2020, Parmigiani et al., 2022). In addition, it includes the spatial locations of the stimulating contacts in native MRI space, MNI152 space and Freesurfer's surface space, as well as the digitized positions of the 185 scalp hd-EEG electrodes.
