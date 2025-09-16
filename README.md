@@ -1,24 +1,6 @@
 # State_Dependent_Brain_Stimulation
-This repository includes the code required to reproduce the results in: "Targeting pre-stimulus brain states predicts and controls variability in stimulation responses"
+This repository includes the code required to reproduce the results in: "Targeting pre-stimulus brain states predicts and controls variability in stimulation responses - Rabuffo, G.; Angiolelli, M.; Fukai, T.; Deco, G.; Sorrentino, P.; Momi, D."
 
-\author[1*$\dag$]{Giovanni Rabuffo}
-\author[2,3$\dag$]{Marianna Angiolelli}
-\author[4]{Tomoki Fukai}
-\author[1]{Gustavo Deco}
-\author[2,5$\ddagger$]{Pierpaolo Sorrentino}
-\author[6,7$\ddagger$]{Davide Momi}  % <- Added affiliation 6
-
-%%%%%% Affiliations %%%%%%
-\affil[1]{Center for Brain and Cognition, Universitat Pompeu Fabra, Barcelona, Spain}
-\affil[2]{Institut de Neuroscience des Systèmes, Aix-Marseille University, Marseille, France}
-\affil[3]{Department of Engineering, Università Campus Bio-Medico di Roma, Rome, Italy}
-\affil[4]{Okinawa Institute for Science and Technology, Okinawa, Japan}
-\affil[5]{Department of Biomedical Sciences, University of Sassari, Sassari, Italy}
-\affil[6]{Brain Stimulation Lab, Stanford Psychiatry and Behavioral Sciences, 401 Quarry Rd, Stanford CA, 94304}
-\affil[7]{Department of Psychiatry and Human Behavior, UCI School of Medicine, Irvine, CA, USA}  % <- New
-\affil[*]{Address correspondence to: giovanni.rabuffo@upf.edu}
-\affil[$\dag$]{These authors contributed equally to this work as first authors.}
-\affil[$\ddagger$]{These authors contributed equally to this work as last authors.}
 
 # Data
 The data used in this study were taken from an open dataset collected at the "Claudio Munari'' Epilepsy Surgery Center of Milan in Italy (https://doi.org/10.17605/OSF.IO/WSGZP), where simultaneous stereotactic electroencephalography (sEEG) and high-density scalp EEG (hd-EEG) was recorded following intracortical single pulse electrical stimulation on 36 patients (median age = 33 ± 8 years, 21 female). All subjects had a history of drug-resistant, focal epilepsy, and were candidates for surgical removal/ablation of the seizure onset zone (SOZ). For details regarding the data acquisition and the preprocessing steps please refer to the original papers (Mikulan et al., 2020, Parmigiani et al., 2022). In addition, it includes the spatial locations of the stimulating contacts in native MRI space, MNI152 space and Freesurfer's surface space, as well as the digitized positions of the 185 scalp hd-EEG electrodes.
