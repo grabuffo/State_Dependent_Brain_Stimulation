@@ -47,5 +47,5 @@ for percentage in percentages:
 ## Example
 
 | Notebook         | Run                 | Description                                                                 |
-|-------------------|----------------|-------------------------------------------------------|
-| extract_metrics               | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]([https://colab.research.google.com/drive/1VeolR4xuSSancsqd3KYTuefPh4IGB700?usp=sharing]) | This notebook shows how to extract features from data
+|------------------|----------------------|-----------------------------------------------------------------------------|
+| extract_metrics  | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1VeolR4xuSSancsqd3KYTuefPh4IGB700?usp=sharing) | This notebook shows how to extract features from data |
