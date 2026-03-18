@@ -1,0 +1,12 @@
+.venv/
+
+# Large data files
+data/df_results/
+data/SEEG/df_correlations_5MOIs_ieeg.csv
+data/SEEG/sub1/sub-01_run-01_Radius-100_metrics_surrogate.pkl.zip
+data/SEEG/sub1/sub-01_run-01_epoched.fif
+data/hdEEG/sub1/sub-01_run-01_epoched.fif
+
+# Large notebooks with embedded outputs
+notebooks/make_df_9MOIs.ipynb
+notebooks/make_correlation_df_5MOIs.ipynb
