@@ -221,6 +221,8 @@ P24,S8,SalVentAttn
 P24,S9,SalVentAttn
 P24,S10,SomMot
 P24,S11,SomMot
+P24,S12,Default
+P24,S13,Default
 P25,S1,Cont
 P25,S2,Default
 P25,S3,Default
@@ -264,6 +266,8 @@ P30,S5,SomMot
 P30,S6,SalVentAttn
 P30,S7,SalVentAttn
 P30,S8,Default
+P30,S9,Default
+P30,S10,Limbic
 P31,S1,SalVentAttn
 P31,S2,Default
 P31,S3,SomMot
@@ -291,6 +295,7 @@ P34,S8,Limbic
 P34,S9,DorsAttn
 P34,S10,SomMot
 P34,S11,Default
+P34,S12,SomMot
 P35,S1,SalVentAttn
 P35,S2,Default
 P35,S3,DorsAttn
