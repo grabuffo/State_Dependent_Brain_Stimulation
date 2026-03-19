@@ -1,51 +1,59 @@
 # State_Dependent_Brain_Stimulation
-This repository includes the code required to reproduce the results in: "Targeting pre-stimulus brain states predicts and controls variability in stimulation responses - G. Rabuffo; M. Angiolelli; T. Fukai; G. Deco; P. Sorrentino; D. Momi"
+This repository includes the code required to reproduce the results in: "Pre-stimulus Brain States Predict and Control Variability in Stimulation Responses - G. Rabuffo; M. Angiolelli; T. Fukai; G. Deco; P. Sorrentino; D. Momi"
 
 ![alt text](https://github.com/grabuffo/State_Dependent_Brain_Stimulation/blob/main/Rabuffo_et_al_Abstract.png)
 
 # Data
-The data used in this study were taken from an open dataset collected at the "Claudio Munari'' Epilepsy Surgery Center of Milan in Italy (https://doi.org/10.17605/OSF.IO/WSGZP), where simultaneous stereotactic electroencephalography (SEEG) and high-density scalp EEG (hd-EEG) was recorded following intracortical single pulse electrical stimulation on 36 patients (median age = 33 ± 8 years, 21 female). All subjects had a history of drug-resistant, focal epilepsy, and were candidates for surgical removal/ablation of the seizure onset zone (SOZ). For details regarding the data acquisition and the preprocessing steps please refer to the original papers (Mikulan et al., 2020, Parmigiani et al., 2022). In addition, it includes the spatial locations of the stimulating contacts in native MRI space, MNI152 space and Freesurfer's surface space, as well as the digitized positions of the 185 scalp hd-EEG electrodes.
+The data used in this study were taken from an open dataset collected at the "Claudio Munari" Epilepsy Surgery Center of Milan in Italy (https://doi.org/10.17605/OSF.IO/WSGZP), where simultaneous stereotactic electroencephalography (SEEG) and high-density scalp EEG (hd-EEG) was recorded following intracortical single pulse electrical stimulation on 36 patients (median age = 33 ± 8 years, 21 female). All subjects had a history of drug-resistant, focal epilepsy, and were candidates for surgical removal/ablation of the seizure onset zone (SOZ). For details regarding the data acquisition and preprocessing steps please refer to the original papers (Mikulan et al., 2020; Parmigiani et al., 2022). The dataset also includes the spatial locations of the stimulating contacts in native MRI space, MNI152 space, and Freesurfer's surface space, as well as the digitized positions of the 185 scalp hd-EEG electrodes.
+
+# Repository Structure
+
+```
+src/                    # Core analysis functions
+notebooks/              # Jupyter notebooks reproducing all figures
+data/                   # Data files (large files excluded via .gitignore)
+results/figures/        # Output figures
+```
+
+# Source Code
+
+| File | Description |
+|------|-------------|
+| `src/functions.py` | Core functions for extracting metrics of interest (MOIs) from pre- and post-stimulus windows, including signal statistics, connectivity, network measures, and information-theoretic metrics. |
+| `src/surrogates.py` | Generates null datasets by trial-shuffling channels independently within each session, preserving temporal structure while disrupting cross-channel trial-specific dependencies. |
+| `src/functions_figs.py` | Plotting utilities used across figure notebooks. |
 
 # Notebooks
-This repository contains Jupyter notebooks that replicate the code and results presented in our paper. 
-Each notebook serves a specific purpose as described below:
 
-| functions                         | Description                                                                 |
-|-----------------------------------|-----------------------------------------------------------------------------|
-| functions                | This code provides a framework for analyzing neural data before and after a stimulus, focusing on channels near the stimulation site. The function channels_around_stimulus identifies which channels fall within a given radius of the stimulus, while MetricsOfInterest extracts different features (signal statistics, connectivity, network measures, and information-theoretic metrics) from the data, optionally restricted to those nearby channels. The main function analyze_pre_VS_post then splits the data into pre- and post-stimulus time windows, computes the metrics for each period, and compares them by calculating Spearman correlations and p-values between pre- and post-stimulus metrics. This allows us to quantify how neural activity changes in response to stimulation, both locally (within a radius) and across the entire network.
-| surrogates      | This function generates a null dataset by trial-shuffling the channels independently within each session. This procedure preserves the temporal structure of each individual channel and maintains its trial-averaged response, but disrupts the cross-channel synchrony within single trials. As a result, the surrogate dataset retains identical marginal distributions and within-channel signal properties while eliminating trial-level dependencies that could reflect stimulation-induced effects. This shuffled dataset can then be used as a reference distribution to assess the statistical significance of observed correlations between metrics of interest (MOIs) in pre- and post-stimulus periods, allowing us to distinguish genuine stimulation effects from chance fluctuations.
+## Data preparation
 
-## How to use the functions
+| Notebook | Description |
+|----------|-------------|
+| `extract_metrics.ipynb` | Extracts MOIs from raw epoched data across spatial radii for all subjects and sessions. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1VeolR4xuSSancsqd3KYTuefPh4IGB700?usp=sharing) |
+| `make_correlation_df_5MOIs.ipynb` | Builds the pre/post correlation dataframe for the 5 main metrics of interest across all sessions and radii. |
+| `make_correlation_df_allMOIs_100radius.ipynb` | Same as above but for all available metrics at 100% radius, used for the extended correlation matrix (Supplementary Fig. S1). |
 
-```python
-percentages = [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-ini_pre, fini_pre = 25, 250
-ini_post, fini_post = 310, 900
+## Main figures
 
-output_dir = os.path.join(base_path, sub2use, "source_EEG_regions")
-os.makedirs(output_dir, exist_ok=True)
+| Notebook | Description |
+|----------|-------------|
+| `Figure_1_A-B.ipynb` | Pre- vs. post-stimulus metric scatterplots and NRC curves (SEEG and hd-EEG). |
+| `Figure_1_C.ipynb` | Session-level summary of pre/post correlations across participants. |
+| `Figure_1_D.ipynb` | Out-of-sample prediction performance. |
+| `Figure_2.ipynb` | Cross-metric correlation matrices and generalization frequency maps. |
+| `Figure_3.ipynb` | Trial-to-trial variability before and after stimulation. |
+| `Figure_4.ipynb` | Prospective closed-loop stimulation: state-conditioned triggering and variability reduction. |
+| `Figure_5_radius_dependence_SEEG.ipynb` | Radius dependence of pre/post explained variance — SEEG. |
+| `Figure_5_radius_dependence_hdEEG.ipynb` | Radius dependence of pre/post explained variance — hd-EEG. |
+| `Figure_6_network_dependence_SEEG.ipynb` | Network-dependent predictability across stimulated functional networks — SEEG. |
+| `Figure_6_network_dependence_hdEEG.ipynb` | Network-dependent predictability across stimulated functional networks — hd-EEG. |
 
-for percentage in percentages:
-    ch_index2use = np.argsort(distances)[:int(distances.shape[0] * percentage / 100)] 
-    R = int(distances[ch_index2use[-1]]) + 1
-    metrics_pre, metrics_post, Corr, Piva = fun.analyze_pre_VS_post(
-        region_signals_per_trial[:,:-1,:], distances=distances, R=R,
-        ini_pre=ini_pre, fini_pre=fini_pre,
-        ini_post=ini_post, fini_post=fini_post
-    )
-    data_save = {
-        'metrics_pre': metrics_pre,
-        'metrics_post': metrics_post,
-        'Corr': Corr,
-        'Piva': Piva
-    }
-    output_path = os.path.join(base_path, sub2use, f"{sub2use}_{run}_{percentage}_metrics.pkl")
-    with open(output_path, 'wb') as file:
-        pickle.dump(data_save, file)
-    print("Analysis complete and results saved at:", output_path)
-```
-## Example
+## Supplementary figures
 
-| Notebook         | Run                 | Description                                                                 |
-|------------------|----------------------|-----------------------------------------------------------------------------|
-| extract_metrics  | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1VeolR4xuSSancsqd3KYTuefPh4IGB700?usp=sharing) | This notebook shows how to extract features from data |
+| Notebook | Description |
+|----------|-------------|
+| `Suppl_Figure_2.ipynb` | Surrogate test validating pre/post NRC correlations against channel-shuffle null. |
+| `Suppl_Figure_3_Carryover_control_5MOIs_SEEG.ipynb` | Carryover control analysis (lagged predictor) — SEEG. |
+| `Suppl_Figure_3_Carryover_control_5MOIs_hdEEG.ipynb` | Carryover control analysis (lagged predictor) — hd-EEG. |
+| `Suppl_Figure_4_circular_trial_shift_5MOIs_SEEG.ipynb` | Circular trial-shift null model — SEEG. |
+| `Suppl_Figure_4_circular_trial_shift_5MOIs_hdEEG.ipynb` | Circular trial-shift null model — hd-EEG. |
